@@ -1,4 +1,4 @@
-# _Code Name: TBD_
+# _Code Name: US-MMR_
 # US Maternal Mortality Rate
 ## Jonathan H. Ortiz-Candelaria (jhoc@uw.edu), JP Lopez (jlopez19@uw.edu), Aronia McLean (aroniam@uw.edu)  
 ## INFO-201: Technical Foundations of Informatics - The Information School - University of Washington
@@ -20,13 +20,15 @@ The CDC defines maternal mortality as the death of a woman during pregnancy, at 
 
 - Direct and Indirect Stakeholders: Direct stakeholders for this project could include researchers collecting data on the prevalence of maternal mortality and how it correlates with social factors such as race and geographic location. Once our project is completed, the data and information we collect will become accessible to anyone seeking information on the research topic. Indirect stakeholders of the project will include women who have been or will be impacted by maternal mortality, more specifically Black women as this population is most impacted by the issue. Since maternal mortality can affect almost any woman during childbirth, more often Black women, the data we collect has the potential to highlight the issue and impact decision making on various levels such as on a policy level.
 
-- Possible harms and benefits:
+- Possible Harms: A possible harm that could arise from the project could be the invasion of privacy through the utilization of potentially sensitive data and information. Much of the data that will be collected for our project will be related to death, specifically in the context of maternal mortality. The topic and data collected may be sensitive to populations that maternal mortality primarily affected. Even more, it is possible that hospital store and collect data pertaining to maternal mortality without the full consent of patient whose cause of death was maternal mortality. Therefore, the information also becomes a sensitive topic for the families of those who have passed from maternal mortality as it is possible that the information and data of their family member is being used.  
+
+- Possible Benefits: The project will highlight an important issue relating to health equity. By gathering data pertaining to maternal mortality and the disparities it creates, our project has the potential to push for action that addresses and seeks solutions for maternal mortality.  
 
 - Citations:
   - Declercq, E., &amp; Zephyrin, L. (n.d.). Maternal in the United States - Commonwealth Fund. Retrieved October 31, 2022, from https://www.commonwealthfund.org/sites/default/files/2020-12/Declercq_maternal_mortality_primer_db.pdf
   - Wang, E., Glazer, K. B., Howell, E. A., &amp; Janevic, T. M. (2020, April). Social determinants of pregnancy-related mortality and morbidity in the United States: A systematic review. Obstetrics and gynecology. Retrieved October 31, 2022, from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7104722/
   - Douthard, R., Martin, I., Chapple-Mcgrudder, T., Langer, A., &amp; Chang, S. (2022, February 2). U.S. maternal mortality within a global context: Historical trends ... Mary Anne Liebert, Inc Publishers. Retrieved October 31, 2022, from https://www.liebertpub.com/doi/full/10.1089/jwh.2020.8863
-  
+
 ### Research Questions
 - How do maternal mortality rates differ across the US?  
 
@@ -51,8 +53,8 @@ The CDC defines maternal mortality as the death of a woman during pregnancy, at 
 |Mort2020US.PubUse.csv        |1048575                      |95                           |
 
 - URL:
- - maternalMortalityRatio.csv _(Global)_ - https://www.kaggle.com/datasets/utkarshxy/who-worldhealth-statistics-2020-complete
- - Mort2020US.PubUse.csv _(US only)_ - https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
+  - maternalMortalityRatio.csv _(Global)_ - https://www.kaggle.com/datasets/utkarshxy/who-worldhealth-statistics-2020-complete
+  - Mort2020US.PubUse.csv _(US only)_ - https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
 
 
 - The first dataset is taken from Kaggle by a user who had sourced it originally from the World Health Organization. This includes data from the year 2000 to 2017 for the purpose of making a plan to reduce the amount of preventable maternal mortalities. This project was funded by the World Health Organization for the benefit of research and countries all around the world. Due to this, we can determine that the source is credible and is updated on a fairly frequent term. The second dataset is taken from the CDC’s National Center for Health Statistics website. It is sourced from the National Vital Statistics System for the purpose of studying maternal mortality rates and making them easily accessible to others. It is updated yearly, with this specific dataset being from 2020. Its mission being to automate the entry, classification, and retrieval of cause-of-death information. This dataset is funded by the CDC and in turn the US government for this purpose; meaning that they are the ones who benefit the most from it and are trustworthy.   
