@@ -1,4 +1,4 @@
-# P2: Bar chart (Chart 2)
+# P2: Scatterplot (Chart 2)
 library(tidyverse)
 library(dplyr)
 wastate_deaths <- read.csv("../data/wastate_fetaldeaths.csv")
