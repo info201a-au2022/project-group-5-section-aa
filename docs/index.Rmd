@@ -1,7 +1,7 @@
 ---
-title: "Your Project Title"
-author: "project team members"
-date: "1/22/2022"
+title: "US Maternal, Fetal, and Infant Mortality"
+author: "Jonathan H. Ortiz-Candelaria, JP Lopez, and Aronia Mclean"
+date: "11/14/2022"
 output: html_document
 ---
 
@@ -52,3 +52,39 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## Dynamic Paragraph
+## Source variables
+
+
+## Initialize variables
+
+
+## Write Paragraph
+
+
+## Table
+## Render table
+
+
+## Short description
+
+
+## Three charts
+## Render chart 1
+
+
+## Short description of chart 1
+
+
+## Render chart 2
+
+
+## Short description of chart 2
+
+
+## Render chart 3
+
+
+## Short description of chart 3
