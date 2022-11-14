@@ -1,7 +1,7 @@
 # P2: Bar Graph with Line of Best Fit (Chart 1)
 library(tidyverse)
 library(dplyr)
-wastate_deaths <- read.csv("wastate_fetaldeaths.csv")
+wastate_deaths <- read.csv("../data/wastate_fetaldeaths.csv")
 View(wastate_deaths)
 str(wastate_deaths)
 
@@ -91,7 +91,7 @@ View(by_year)
 
 
 # Creating a bar graph with a line of best fit (set it to a variable to call it in the index.rmd)
-infant_deaths_scatterplot <- ggplot(data = by_year) + 
+infant_deaths_bargraph <- ggplot(data = by_year) + 
   geom_col(mapping = aes(
     x = year, 
     y = infant_deathstotal
@@ -106,7 +106,7 @@ infant_deaths_scatterplot <- ggplot(data = by_year) +
     alt = "Total Infant Deaths Per Year from 1990 to 2020"
   ) + 
   geom_smooth(aes(x = year, y = infant_deathstotal), se = FALSE)
-infant_deaths_scatterplot
+infant_deaths_bargraph
 
 
 
