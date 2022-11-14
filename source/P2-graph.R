@@ -1,4 +1,4 @@
-# P2: Scatter plot (Chart 1)
+# P2: Bar chart (Chart 2)
 library(tidyverse)
 library(dplyr)
 wastate_deaths <- read.csv("wastate_fetaldeaths.csv")
@@ -82,43 +82,52 @@ typeof(wastate_deaths$infant_deaths) # integer
 wastate_deaths$live_births <- as.integer(wastate_deaths$live_births)
 typeof(wastate_deaths$live_births) # integer 
 
+# Filtering for things i want
+fetaldeaths_2015_2020 <- wastate_deaths %>%
+  group_by(location) %>%
+  filter(year > 2015) %>%
+  select(fetal_deaths)
+View(fetaldeaths_2015_2020)
 
-# Grouping total infant deaths per year 
-by_year <- wastate_deaths %>%
+# making a map 
+data <- wastate_deaths(murder = USArrests$Murder, state = tolower(rownames(USArrests)))
+map <- map_data("Washington")
+k <- ggplot(data, aes(fill = murder))
+
+k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)
+map_id, alpha, color, fill, linetype, size
+?geom_map
+
+# Grouping total fetal deaths per year 
+fetal_by_year <- wastate_deaths %>%
   group_by(year) %>%
-  summarize(infant_deathstotal = sum(infant_deaths, na.rm = TRUE))
-View(by_year) 
+  summarize(fetal_deathstotal = sum(fetal_deaths, na.rm = TRUE))
+View(fetal_by_year) 
 
-# Creating a bar graph and later making it a scatterplot (set it to a variable to call it in the index.rmd)
-infant_deaths_scatterplot <- ggplot(data = by_year) + 
+?geom_map
+
+# Choosing fetal deaths for year 2020
+fetaldeaths_2020 <- wastate_deaths %>%
+  filter(year == "2020") %>%
+  pull(fetal_deaths)
+print(fetaldeaths_2020)
+
+# Creating a bar graph (set it to a variable to call it in the index.rmd)
+fetal_deaths_barchart <- ggplot(data = fetal_by_year) + 
   geom_col(mapping = aes(
     x = year, 
-    y = infant_deathstotal
+    y = fetal_deathstotal
   ), 
   fill = "lightblue"
   ) + 
   scale_y_continuous(labels = scales:: comma) +
   labs(
     x = "Year",
-    y = "Total Infant Deaths",
-    title = "Annual Infant Deaths from 1990 to 2020",
-    alt = "Total Infant Deaths Per Year from 1990 to 2020"
+    y = "Total Fetal Deaths",
+    title = "Total Fetal Deaths from 1990 to 2020",
+    alt = "Annual Fetal Deaths from 1990 to 2020"
   ) 
-infant_deaths_scatterplot
-
-# Creating the scatterplot chart called infant_deaths_scatterplot
-# adding line of best fit 
-infant_deaths_scatterplot <- ggplot(by_year, aes(x=year, y=infant_deathstotal)) +
-  geom_point() +
-  geom_smooth(method=lm)
-infant_deaths_scatterplot
-
-
-
-
-
-
-
+fetal_deaths_barchart
 
 
 

@@ -1,4 +1,4 @@
-# P2: Bar chart (Chart 2)
+# P2: Bar Graph with Line of Best Fit (Chart 1)
 library(tidyverse)
 library(dplyr)
 wastate_deaths <- read.csv("wastate_fetaldeaths.csv")
@@ -82,28 +82,39 @@ typeof(wastate_deaths$infant_deaths) # integer
 wastate_deaths$live_births <- as.integer(wastate_deaths$live_births)
 typeof(wastate_deaths$live_births) # integer 
 
-# Grouping total fetal deaths per year 
-fetal_by_year <- wastate_deaths %>%
-  group_by(year) %>%
-  summarize(fetal_deathstotal = sum(fetal_deaths, na.rm = TRUE))
-View(fetal_by_year) 
 
-# Creating a bar graph (set it to a variable to call it in the index.rmd)
-fetal_deaths_barchart <- ggplot(data = fetal_by_year) + 
+# Grouping total infant deaths per year 
+by_year <- wastate_deaths %>%
+  group_by(year) %>%
+  summarize(infant_deathstotal = sum(infant_deaths, na.rm = TRUE))
+View(by_year) 
+
+
+# Creating a bar graph with a line of best fit (set it to a variable to call it in the index.rmd)
+infant_deaths_scatterplot <- ggplot(data = by_year) + 
   geom_col(mapping = aes(
     x = year, 
-    y = fetal_deathstotal
+    y = infant_deathstotal
   ), 
   fill = "lightblue"
   ) + 
   scale_y_continuous(labels = scales:: comma) +
   labs(
     x = "Year",
-    y = "Total Fetal Deaths",
-    title = "Total Fetal Deaths from 1990 to 2020",
-    alt = "Annual Fetal Deaths from 1990 to 2020"
-  ) 
-fetal_deaths_barchart
+    y = "Total Infant Deaths",
+    title = "Annual Infant Deaths from 1990 to 2020",
+    alt = "Total Infant Deaths Per Year from 1990 to 2020"
+  ) + 
+  geom_smooth(aes(x = year, y = infant_deathstotal), se = FALSE)
+infant_deaths_scatterplot
+
+
+
+
+
+
+
+
 
 
 
