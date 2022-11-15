@@ -7,17 +7,17 @@ global_maternal_mortality <- read.csv("../data/maternalMortalityRatio.csv")
 
 summary_info <- list()
 
-#Top five US states with the most infant deaths in 2005 
-summary_info$top_states_2005 <- state_infant_mortality %>% 
+#Top US state with the most infant deaths in 2005 
+summary_info$top_state_2005 <- state_infant_mortality %>% 
   filter(YEAR == 2005) %>% 
-  arrange(desc(DEATHS)) %>% 
-  slice(1:5)
+  filter(DEATHS == max(DEATHS)) %>% 
+  pull(STATE)
 
-#Top five US states with the most deaths in 2020
-summary_info$top_states_2020 <- state_infant_mortality %>% 
+#Top US state with the most deaths in 2020
+summary_info$top_state_2020 <- state_infant_mortality %>% 
   filter(YEAR == 2020) %>% 
-  arrange(desc(DEATHS)) %>% 
-  slice(1:5)
+  filter(DEATHS == max(DEATHS)) %>% 
+  pull(STATE)
 
 #Total Number of Infant Mortalities in 2020 across the US
 summary_info$total_infant_mortalities_2020 <- state_infant_mortality %>% 

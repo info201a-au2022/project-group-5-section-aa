@@ -6,17 +6,20 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(dplyr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Dynamic Paragraph
 ## Source variables
-```{r, echo = FALSE}
+```{r echo = FALSE}
 source("../source/summary_info.R")
 ```
 
 ## Write Paragraph
-Maternal, infant, and fetal mortality rates are all very similar. They depend on a lot of similar factors and that is why our project focuses on all three. Through our research we found a few interesting details. The top five US states with the most infant deaths in 2005 were `r summary_info$top_states_2005`, yet the latest(as of 2020) top five US states were `r summary_info$top_states_2020`. We also found that the total number of infant deaths across the US in 2020 was `r summary_info$total_infant_mortalities_2020`. When taking a look at global maternal mortality rates we found that the highest death count was `r summary_info$highest_yearly_deaths`, in `r summary_info$highest_country`, and during the year `r summary_info$highest_year`.
+Maternal, infant, and fetal mortality rates are all very similar. They depend on a lot of similar factors and that is why our project focuses on all three. Through our research we found a few interesting details. The top US state with the most infant deaths in 2005 was `r summary_info$top_state_2005`, yet the latest(as of 2020) top US state was `r summary_info$top_state_2020`. We also found that the total number of infant deaths across the US in 2020 was `r summary_info$total_infant_mortalities_2020`. When taking a look at global maternal mortality rates we found that the highest death count was `r summary_info$highest_yearly_deaths`, in `r summary_info$highest_country`, and during the year `r summary_info$highest_year`.
 
 ## Table
 ## Source table
