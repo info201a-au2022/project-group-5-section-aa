@@ -7,27 +7,17 @@
 # Includes purpose (why it's included)
 # Includes insights (what information is revealed)
 
-install.packages("tidyverse")
-install.packages("dplyr")
-install.packages("hrbrthemes")
-install.packages("kableExtra")
-install.packages("babynames")
-install.packages("streamgraph")
-install.packages("viridis")
-install.packages("DT")
-install.packages("plotly")
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 library(hrbrthemes)
 library(kableExtra)
 library(babynames)
-library(streamgraph)
 library(viridis)
 library(DT)
 library(plotly)
 
-state_infant_mortality <- read.csv("Documents/info201/im_state_table.csv")
+state_infant_mortality <- read.csv("../data/im_state_table.csv")
 View(state_infant_mortality)
 
 state_infant_mortality$URL <- NULL

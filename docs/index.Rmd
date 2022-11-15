@@ -12,62 +12,62 @@ library(dplyr)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Dynamic Paragraph
-## Source variables
-```{r echo = FALSE}
+<!-- Dynamic Paragraph -->
+<!-- Source variables -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 source("../source/summary_info.R")
 ```
 
-## Write Paragraph
+<!-- Write Paragraph -->
 Maternal, infant, and fetal mortality rates are all very similar. They depend on a lot of similar factors and that is why our project focuses on all three. Through our research we found a few interesting details. The top US state with the most infant deaths in 2005 was `r summary_info$top_state_2005`, yet the latest(as of 2020) top US state was `r summary_info$top_state_2020`. We also found that the total number of infant deaths across the US in 2020 was `r summary_info$total_infant_mortalities_2020`. When taking a look at global maternal mortality rates we found that the highest death count was `r summary_info$highest_yearly_deaths`, in `r summary_info$highest_country`, and during the year `r summary_info$highest_year`.
 
-## Table
-## Source table
-```{r, echo = FALSE}
+<!-- Table -->
+<!-- Source table -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 source("../source/table_of_summary_info.R")
 ```
 
-## Render table
-```{r, echo = FALSE}
-kable(group_states)
+<!-- Render table -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE}
+kable(group_states, align = 'cc')
 ```
 
-## Short description
+<!-- Short description -->
 This table shows the infant mortality rates and deaths for states across the US from 2016 to 2020. The purpose of it is to understand how these rates and deaths differ across states in the most recent years. It's important to note that with this we can take into account how differences in geography and population makeup impact these numbers.
 
-## Three charts
-## Source chart 1
-```{r, echo = FALSE}
+<!-- Three charts -->
+<!-- Source chart 1 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 source("../source/P2-bar_chart.R")
 ```
-## Render chart 1
-```{r, echo=FALSE}
+<!-- Render chart 1 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 infant_deaths_bargraph
 ```
 
-## Short description of chart 1
+<!-- Short description of chart 1 -->
 This chart displays the annual infant deaths spanning from 1990 to 2020. Total infant deaths represent the number of infant deaths per year. The Washington State Department of Health describes infant death as the death of a child that is under the age of one. The purpose of this chart is to show the changes overtime of infant deaths over the course of a thirty year period. This graph reveals that the overall rate of annual infant deaths has been declining throughout the years. The data for this chart was collected from the Washington State Department of Health.
 
-## Source chart 2
-```{r, echo = FALSE}
+<!-- Source chart 2 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 source("../source/P2-scatterplot.R")
 ```
-## Render chart 2
-```{r, echo=FALSE}
+<!-- Render chart 2 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 fetaldeaths_scatterplot
 ```
 
-## Short description of chart 2
+ <!-- Short description of chart 2 -->
 This chart displays the annual fetal deaths from 1990 to 2020. Total fetal deaths represent the number of fetal deaths per year. The Washington State Department of Health defines fetal death as death that occurs prior to the complete extraction/ expulsion from its mother (regardless of how long the pregnancy was). The overall trend that this graph reveals is an increase of annual fetal deaths overtime. The purpose of this chart is to show the changes overtime of fetal deaths spanning over a thirty year period. The data for this chart was collected from the Washington State Department of Health.
 
-## Source chart 3
-```{r, echo = FALSE}
+<!-- Source chart 3 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 source("../source/line_graph.R")
 ```
-## Render chart 3
-```{r, echo=FALSE}
+<!-- Render chart 3 -->
+```{r, echo = FALSE, warning=FALSE, message=FALSE, results='hide'}
 infant_mortality_line_graph
 ```
 
-## Short description of chart 3
+<!-- Short description of chart 3 -->
 This chart illustrates infant mortality trends in each of the 50 U.S. states from the years 2005 to 2020. Each line represents a different state. We included a line graph to visualize the number of infant mortalities in the U.S. while comparing individual trends among each state. The line graph reveals an overall downward trend in the number of infant mortality throughout the U.S. from the years 2005 to 2020. Infant mortality rates are differentiated among each individual state, with California having the highest number of infant mortalities in 2005 and then Texas 2020. With the line graph, observations such as Texas surpassing California for the state with the highest number of infant moralities beginning in 2012 are highlighted. The data for this chart was collected from the Center for Disease Control and Prevention. 

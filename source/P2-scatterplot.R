@@ -93,7 +93,6 @@ View(fetaldeaths_by_year)
 fetaldeaths_scatterplot <- ggplot(fetaldeaths_by_year, aes(x=year, y=fetal_deathstotal)) +
   geom_point() +
   geom_smooth(method=lm , color="blue", se=FALSE) +
-  theme_ipsum() + 
   scale_y_continuous(labels = scales:: comma) +
   labs(
     x = "Year",
