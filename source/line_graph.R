@@ -64,7 +64,7 @@ data <- state_infant_mortality %>%
 
 View(data)
 
-data %>% 
+infant_mortality_line_graph <- data %>% 
   ggplot(aes(x=YEAR, y=DEATHS, group=STATE, color=STATE)) +
   geom_line() +
   scale_color_viridis(discrete = TRUE) +
@@ -73,5 +73,4 @@ data %>%
     plot.title = element_text(size=14)
   ) +
   ggtitle("Infant Mortality by State from 2005 to 2020")
-
   
