@@ -9,82 +9,62 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## What is this file for?
-
-* This file will eventually become your project report for **P02: Exploratory Data Analysis**. Specifically, you will write rmarkdown to report your exploratory data analysis.
-
-* Please see Canvas for more details.
-
-## ACCESSING THE /source DIRECTORY
-### Example 1: Source some code and run a function
-```{r}
-# Example 1: Note relative path, which can be read: Up one
-# directory(..), down into source (/source), and 
-# then "source" an R file (data_access.R)
-source("../source/data_access.R")
-data_access_test()
-```
-
-### Example 2: Initialize a variable and then use it
-```{r}
-# Example 1: This function was "sourced" above
-msg <- data_access_test(" Morgan!")
-```
-
-> `r msg` Hope you have a good day!! 
-
-## ABOUT THIS FILE: 
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-
 ## Dynamic Paragraph
 ## Source variables
-
-
-## Initialize variables
-
+```{r, echo = FALSE}
+source("../source/summary_info.R")
+```
 
 ## Write Paragraph
-
+Maternal, infant, and fetal mortality rates are all very similar. They depend on a lot of similar factors and that is why our project focuses on all three. Through our research we found a few interesting details. The top five US states with the most infant deaths in 2005 were `r summary_info$top_states_2005`, yet the latest(as of 2020) top five US states were `r summary_info$top_states_2020`. We also found that the total number of infant deaths across the US in 2020 was `r summary_info$total_infant_mortalities_2020`. When taking a look at global maternal mortality rates we found that the highest death count was `r summary_info$highest_yearly_deaths`, in `r summary_info$highest_country`, and during the year `r summary_info$highest_year`.
 
 ## Table
-## Render table
+## Source table
+```{r, echo = FALSE}
+source("../source/table_of_summary_info.R")
+```
 
+## Render table
+```{r, echo = FALSE}
+kable(group_states)
+```
 
 ## Short description
-
+This table shows the infant mortality rates and deaths for states across the US from 2016 to 2020. The purpose of it is to understand how these rates and deaths differ across states in the most recent years. It's important to note that with this we can take into account how differences in geography and population makeup impact these numbers.
 
 ## Three charts
+## Source chart 1
+```{r, echo = FALSE}
+source("../source/P2-bar_chart.R")
+```
 ## Render chart 1
-
+```{r, echo=FALSE}
+infant_deaths_bargraph
+```
 
 ## Short description of chart 1
+This chart displays the annual infant deaths spanning from 1990 to 2020. Total infant deaths represent the number of infant deaths per year. The Washington State Department of Health describes infant death as the death of a child that is under the age of one. The purpose of this chart is to show the changes overtime of infant deaths over the course of a thirty year period. This graph reveals that the overall rate of annual infant deaths has been declining throughout the years. The data for this chart was collected from the Washington State Department of Health.
 
-
+## Source chart 2
+```{r, echo = FALSE}
+source("../source/P2-scatterplot.R")
+```
 ## Render chart 2
-
+```{r, echo=FALSE}
+fetaldeaths_scatterplot
+```
 
 ## Short description of chart 2
+This chart displays the annual fetal deaths from 1990 to 2020. Total fetal deaths represent the number of fetal deaths per year. The Washington State Department of Health defines fetal death as death that occurs prior to the complete extraction/ expulsion from its mother (regardless of how long the pregnancy was). The overall trend that this graph reveals is an increase of annual fetal deaths overtime. The purpose of this chart is to show the changes overtime of fetal deaths spanning over a thirty year period. The data for this chart was collected from the Washington State Department of Health.
 
-
+## Source chart 3
+```{r, echo = FALSE}
+source("../source/line_graph.R")
+```
 ## Render chart 3
-
+```{r, echo=FALSE}
+infant_mortality_line_graph
+```
 
 ## Short description of chart 3
+This chart illustrates infant mortality trends in each of the 50 U.S. states from the years 2005 to 2020. Each line represents a different state. We included a line graph to visualize the number of infant mortalities in the U.S. while comparing individual trends among each state. The line graph reveals an overall downward trend in the number of infant mortality throughout the U.S. from the years 2005 to 2020. Infant mortality rates are differentiated among each individual state, with California having the highest number of infant mortalities in 2005 and then Texas 2020. With the line graph, observations such as Texas surpassing California for the state with the highest number of infant moralities beginning in 2012 are highlighted. The data for this chart was collected from the Center for Disease Control and Prevention. 
