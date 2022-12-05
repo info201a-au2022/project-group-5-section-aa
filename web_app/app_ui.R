@@ -177,6 +177,7 @@ ui <- fluidPage(
     "MIFMR",
     first_page,
     second_page,
+    us_states_page, # third page
     maternal_mortality_page, # fourth page
     report_page, # sixth page
     seventh_page

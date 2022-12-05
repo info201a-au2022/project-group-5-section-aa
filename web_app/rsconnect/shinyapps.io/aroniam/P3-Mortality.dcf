@@ -5,9 +5,9 @@ account: aroniam
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7813115
-bundleId: 6594995
+bundleId: 6595958
 url: https://aroniam.shinyapps.io/P3-Mortality/
-when: 1670264174.03338
-lastSyncTime: 1670264174.03339
+when: 1670276612.92369
+lastSyncTime: 1670276612.9237
 asMultiple: FALSE
 asStatic: FALSE

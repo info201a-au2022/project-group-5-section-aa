@@ -138,7 +138,7 @@ output$states_map <- renderPlot({
     
     states_data <- left_join(state_shape, states_data)
     
-    states_map <- ggplot(states_data) +
+    ggplot(states_data) +
       geom_polygon(
         mapping = aes(x = long, y = lat, group = group, fill = total_infant_deaths)) + 
       scale_fill_continuous(low = 'yellow', high ='red', labels = scales::label_number_si()) +
@@ -146,7 +146,7 @@ output$states_map <- renderPlot({
       labs(title = "U.S. Total Infant Mortality by State from 2005 - 2020",
            fill = "Number of Infant Mortalities")
     
-    ggplotly(states_map)
+   # ggplotly(states_map)
     
   })
 })
