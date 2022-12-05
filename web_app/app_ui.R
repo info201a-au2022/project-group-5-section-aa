@@ -45,7 +45,7 @@ first_page <- tabPanel(
 )
 # Link to including image: https://shiny.rstudio.com/tutorial/written-tutorial/lesson2/
 
-# Page 2: Interactive page
+# Page 2: Interactive page - Infant and Fetal Mortality(Washington State)
 second_page <-tabPanel(
   "Deaths Temp Page",
   h1("viz", align = "center"),
@@ -69,6 +69,63 @@ second_page <-tabPanel(
     ))
 )
 
+# Page 3: Interactive Page - Infant Mortality(US)
+
+# Page 4: Interactive Page - Maternal Mortality(Global)
+# Choices for dropdown menu
+grouped_maternalMortalityRatio <- maternalMortalityRatio %>% 
+  filter(Year == "2017")
+countries <- grouped_maternalMortalityRatio$Country
+numbers <- 1:183
+
+# Maternal mortality visualization page
+maternal_mortality_page <- tabPanel(
+  "Maternal Mortality", 
+  mainPanel(
+    h1("Maternal Mortality"),
+    p("Maternal mortality refers to a mother's death caused due to complications
+      from pregnancy or childbirth. The maternal mortality rate that is used in 
+      this data is calculated by finding the number of maternal deaths per 
+      100,000 live births.")
+  ),
+  mainPanel(
+    plotOutput("maternalRatioMap")
+  ),
+  sidebarPanel(
+    sliderInput("yearSlider", label = h3("Year"), min = 2000,
+                max = 2017, value = 2017)
+  ),
+  mainPanel(
+    p("As we can see with this graph, ratios tend to differ from country to 
+      country. More specifically, on their kind of development. Underdeveloped 
+      countries that lack access to essential technology and resources tend to
+      have higher ratios than those that are more developed."),
+    plotOutput("maternalRatioGraph")
+  ), 
+  sidebarPanel(
+    selectInput("countrySelecter", label = h3("Select country"), 
+                choices = countries,
+                selected = 1),
+  ),
+  mainPanel(
+    p("As we can see with this graph, trends vary heavily from country to 
+      country. Some countries have decreased their ratio greatly through the 
+      years, while some have had slight increases. The reasoning behind these
+      increases and decreases are mostly due to societal impacts such as poverty
+      levels, access to healthcare, and access to food, water, and shelter.")
+  )
+)
+
+# Page 5: Summary Takeaways
+
+# Page 6: Report
+report_page <- tabPanel(
+  "Report",
+  mainPanel(
+    includeMarkdown("../docs/p01-proposal.md")
+  )
+)
+
 # Page 7: About 
 seventh_page <- tabPanel(
   "About",
@@ -83,9 +140,11 @@ seventh_page <- tabPanel(
 ui <- fluidPage(
   theme = bslib::bs_theme(bootswatch = "flatly"),
   navbarPage(
-    "INFO 201 P3 Practice",
+    "MIFMR",
     first_page,
     second_page,
+    maternal_mortality_page, # fourth page
+    report_page, # sixth page
     seventh_page
   )
 )
