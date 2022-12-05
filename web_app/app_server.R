@@ -18,7 +18,7 @@ server <- (function(input, output) {
   })
   
   output$newinfantwidget <- renderUI({
-    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 5)
+    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 2.5)
   })
   # Plot for Page 2
   output$infantPlot <- renderPlotly({
@@ -31,6 +31,7 @@ server <- (function(input, output) {
     #adding aesthetics 
     ggplot(infantplotData) +
       geom_point(mapping = aes(x = year, y = infant_deaths, color = location)) +
+      scale_x_continuous(breaks = c(1990, 1995, 2000, 2005, 2010, 2015, 2020)) +
       labs(x = "year",
            y = "infant deaths",
            title = paste("infant deaths in", input$location,"county"))
