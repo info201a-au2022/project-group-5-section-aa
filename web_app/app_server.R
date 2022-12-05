@@ -4,10 +4,18 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
+# JP Extra Libraries
+library(dplyr)
+library(plotly)
+library(maps)
+library(datasets)
+library(usdata)
 
 # Loading data
 wastate_deaths <- read.csv("./wastate_cleaned.csv") # set session to source file location 
 maternalMortalityRatio <- read.csv("../data/maternalMortalityRatio_cleaned.csv")
+states_data <- read.csv("..data/im_state_table.csv")
+
 
 # Writing server code
 server <- (function(input, output) {
@@ -111,5 +119,31 @@ server <- (function(input, output) {
   })
   
   #JP's section
-  
+output$states_map <- renderPlot({
+    
+    states_data$URL <- NULL 
+    
+    states_data <- states_data %>% 
+      group_by(STATE) %>%
+      summarize(total_infant_deaths = sum(DEATHS, na.rm = TRUE)) 
+    
+    state_shape <- map_data("state")
+    state_abbrevs <- data.frame(state.abb, state.name)
+    
+    states_data <- left_join(states_data, state_abbrevs, by = c('STATE' = 'state.abb')) %>% 
+      mutate(region = tolower(state.name))
+    
+    states_data <- left_join(state_shape, states_data)
+    
+    states_map <- ggplot(states_data) +
+      geom_polygon(
+        mapping = aes(x = long, y = lat, group = group, fill = total_infant_deaths)) + 
+      scale_fill_continuous(low = 'yellow', high ='red', labels = scales::label_number_si()) +
+      coord_map() +
+      labs(title = "U.S. Total Infant Mortality by State from 2005 - 2020",
+           fill = "Number of Infant Mortalities")
+    
+    ggplotly(states_map)
+    
+  })
 })
