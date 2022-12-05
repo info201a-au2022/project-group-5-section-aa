@@ -70,6 +70,18 @@ second_page <-tabPanel(
 )
 
 # Page 3: Interactive Page - Infant Mortality(US)
+us_states_page <- tabPanel(
+  "Infant Deaths",
+  mainPanel(
+    h1("Infant Deaths"),
+    p("Infant mortality is the death of an infant before his or her first birthday.
+      The map graph displays the total number of infant mortalities that have occured
+      in each state from 2005 to 2020.")
+  ),
+  mainPanel(
+    plotOutput("states_map")
+  )
+)
 
 # Page 4: Interactive Page - Maternal Mortality(Global)
 # Choices for dropdown menu
@@ -117,6 +129,28 @@ maternal_mortality_page <- tabPanel(
 )
 
 # Page 5: Summary Takeaways
+summary_page <- tabPanel(
+  "Summary Takeaways",
+    h1("The data collected for this projects and the data visualizations that make
+      sense of the information demonstrate significant potential for revealing patterns
+      of inequality. Fetal, infant, and maternal mortality and three issues that must be carefully
+      and properly address to ensure the safety of **all** mothers and infants. Through data wrangling
+      and manipulation, one might begin unveiling truths behind numbers. We belive our data visualizations
+      and the broader project begins to do just that."),
+  p("Our first form of data visualization starts small and local. We analyze data pertaining to both fetal
+  and infant deaths in all 39 Washington state counties. Trends within the data highlighted stark differences
+    between counties, alluding to potntial health ineqity within. The scatterplots display rich data from counties
+    with the highest incomes but show little to no data from counties with the lowest-incomes. We believe such
+    difference might infer portneial iequities within the healthcare system and data collection process in low-income
+    counties within Washington State."),
+  p("The second data visualzation created for a project is a map of all 50 U.S. states. The map specifically displays the
+    total number ot infant mortalities in each state from the years 2005 to 2020. We belive such representation of data will
+    allow viewers to conceptualize infant mortality through a geographic lens."),
+  p("Finally, our last two data visualization models are a line graph and another map. We wanted to zoom out and provide a broader
+    more diverse dataset. The data uses for these visualization displays informations pertaining on maternal mortality 
+    througout the entire world.")
+  )
+)
 
 # Page 6: Report
 report_page <- tabPanel(
