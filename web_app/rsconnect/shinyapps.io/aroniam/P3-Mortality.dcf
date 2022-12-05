@@ -1,0 +1,13 @@
+name: P3-Mortality
+title: P3-Mortality
+username:
+account: aroniam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7813115
+bundleId: 6591717
+url: https://aroniam.shinyapps.io/P3-Mortality/
+when: 1670214609.03184
+lastSyncTime: 1670214609.03186
+asMultiple: FALSE
+asStatic: FALSE
