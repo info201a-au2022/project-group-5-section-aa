@@ -47,7 +47,7 @@ first_page <- tabPanel(
 
 # Page 2: Interactive page - Infant and Fetal Mortality(Washington State)
 second_page <-tabPanel(
-  "Deaths Temp Page",
+  "Wa State- Infant & Fetal Mortality",
   h1("viz", align = "center"),
   mainPanel(
     tabsetPanel(
@@ -149,7 +149,7 @@ summary_page <- tabPanel(
   p("Finally, our last two data visualization models are a line graph and another map. We wanted to zoom out and provide a broader
     more diverse dataset. The data uses for these visualization displays informations pertaining on maternal mortality 
     througout the entire world.")
-  )
+  #)
 )
 
 # Page 6: Report

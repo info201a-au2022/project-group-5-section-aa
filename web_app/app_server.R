@@ -13,9 +13,8 @@ library(usdata)
 
 # Loading data
 wastate_deaths <- read.csv("./wastate_cleaned.csv") # set session to source file location 
-maternalMortalityRatio <- read.csv("../data/maternalMortalityRatio_cleaned.csv")
-states_data <- read.csv("..data/im_state_table.csv")
-
+maternalMortalityRatio <- read.csv("./maternalmortalityratio_cleaned.csv")
+states_data <- read.csv("./im_state_table.csv")
 
 # Writing server code
 server <- (function(input, output) {
