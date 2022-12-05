@@ -48,7 +48,7 @@ first_page <- tabPanel(
 # Page 2: Interactive page - Infant and Fetal Mortality(Washington State)
 second_page <-tabPanel(
   "Wa State- Infant & Fetal Mortality",
-  h1("viz", align = "center"),
+  h1("Infant and Fetal Mortality- Wa State County Data", align = "center"),
   mainPanel(
     tabsetPanel(
       tabPanel("Infants", plotlyOutput("infantPlot"),

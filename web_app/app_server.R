@@ -30,7 +30,7 @@ server <- (function(input, output) {
   })
   
   output$newinfantwidget <- renderUI({
-    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 2.5)
+    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 5)
   })
   # Plot for Page 2
   output$infantPlot <- renderPlotly({
