@@ -4,12 +4,16 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
+library(markdown)
+
 # JP Extra Libraries
 library(dplyr)
 library(plotly)
 library(maps)
 library(datasets)
 library(usdata)
+# Map library 
+library(mapproj)
 
 # Loading data
 wastate_deaths <- read.csv("./wastate_cleaned.csv") # set session to source file location 

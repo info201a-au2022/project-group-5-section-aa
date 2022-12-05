@@ -4,7 +4,7 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
-
+library(markdown)
 # Page 1: Introductory page
 first_page <- tabPanel(
   "Home",
@@ -156,7 +156,7 @@ summary_page <- tabPanel(
 report_page <- tabPanel(
   "Report",
   mainPanel(
-    includeMarkdown("../docs/p01-proposal.md")
+    includeMarkdown("./p01-proposal.md")
   )
 )
 
