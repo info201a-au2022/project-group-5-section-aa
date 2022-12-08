@@ -101,6 +101,23 @@ typeof(wastate_deaths$infant_deaths) # integer
 wastate_deaths$live_births <- as.integer(wastate_deaths$live_births)
 typeof(wastate_deaths$live_births) # integer 
 
+# Changing names of countries to better the joining function
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "United States of America", "USA")
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "Venezuela \\(Bolivarian Republic of\\)",
+                                              "Venezuela")
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "Bolivia \\(Plurinational State of\\)"
+                                              , "Bolivia")
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "Russian Federation", "Russia")
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "Iran \\(Islamic Republic of\\)",
+                                              "Iran")
+maternalMortalityRatio$Country <- str_replace(maternalMortalityRatio$Country,
+                                              "Syrian Arab Republic", "Syria")
+
 # Creating a new clean csv of wastate_deaths
 ?write.csv
 write.csv(wastate_deaths, file = "wastate_cleaned.csv")
