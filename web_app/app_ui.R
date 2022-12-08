@@ -144,18 +144,18 @@ maternal_mortality_page <- tabPanel(
       100,000 live births.")
   ),
   mainPanel(
-    plotOutput("maternalRatioMap")
+    plotlyOutput("maternalRatioMap")
   ),
   sidebarPanel(
-    sliderInput("yearSlider", label = h3("Year"), min = 2000,
-                max = 2017, value = 2017)
+    numericInput("yearSlider", label = h3("Year: 2000-2017"), min = 2000,
+                 max = 2017, value = 2017)
   ),
   mainPanel(
     p("As we can see with this graph, ratios tend to differ from country to 
       country. More specifically, on their kind of development. Underdeveloped 
       countries that lack access to essential technology and resources tend to
       have higher ratios than those that are more developed."),
-    plotOutput("maternalRatioGraph")
+    plotlyOutput("maternalRatioGraph")
   ), 
   sidebarPanel(
     selectInput("countrySelecter", label = h3("Select country"), 
@@ -187,7 +187,7 @@ summary_page <- tabPanel(
 report_page <- tabPanel(
   "Report",
   mainPanel(
-    includeMarkdown("./p01-proposal.md")
+    includeMarkdown("./p03-report.md")
   )
 )
 
@@ -200,7 +200,7 @@ ui <- fluidPage(
     second_page,
     us_states_page, # third page
     maternal_mortality_page, # fourth page
-    report_page, # sixth page
-    summary_page
+    summary_page,
+    report_page # sixth page
   )
 )

@@ -68,7 +68,7 @@ server <- (function(input, output) {
   output$value <- renderPrint({ input$yearSlider })
   
   # Map creation
-  output$maternalRatioMap <- renderPlot({
+  output$maternalRatioMap <- renderPlotly({
     # Using the year widget
     mapMaternalMortalityRatio <- maternalMortalityRatio %>% 
       filter(Year == input$yearSlider)
@@ -99,7 +99,7 @@ server <- (function(input, output) {
   output$value <- renderPrint({ input$countrySelecter })
   
   # Line graph creation
-  output$maternalRatioGraph <- renderPlot({
+  output$maternalRatioGraph <- renderPlotly({
     # Using the country widget
     graphMaternalMortalityRatio <- maternalMortalityRatio %>% 
       filter(Country == input$countrySelecter)
