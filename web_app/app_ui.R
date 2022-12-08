@@ -174,26 +174,14 @@ maternal_mortality_page <- tabPanel(
 # Page 5: Summary Takeaways
 summary_page <- tabPanel(
   "Summary Takeaways",
-    h1("The data collected for this projects and the data visualizations that make
-      sense of the information demonstrate significant potential for revealing patterns
-      of inequality. Fetal, infant, and maternal mortality and three issues that must be carefully
-      and properly address to ensure the safety of **all** mothers and infants. Through data wrangling
-      and manipulation, one might begin unveiling truths behind numbers. We belive our data visualizations
-      and the broader project begins to do just that."),
-  p("Our first form of data visualization starts small and local. We analyze data pertaining to both fetal
-  and infant deaths in all 39 Washington state counties. Trends within the data highlighted stark differences
-    between counties, alluding to potntial health ineqity within. The scatterplots display rich data from counties
-    with the highest incomes but show little to no data from counties with the lowest-incomes. We believe such
-    difference might infer portneial iequities within the healthcare system and data collection process in low-income
-    counties within Washington State."),
-  p("The second data visualzation created for a project is a map of all 50 U.S. states. The map specifically displays the
-    total number ot infant mortalities in each state from the years 2005 to 2020. We belive such representation of data will
-    allow viewers to conceptualize infant mortality through a geographic lens."),
-  p("Finally, our last two data visualization models are a line graph and another map. We wanted to zoom out and provide a broader
-    more diverse dataset. The data uses for these visualization displays informations pertaining on maternal mortality 
-    througout the entire world.")
+  h2("Data Takeaways"),
+  p("The data collected for the MIFMR project and the data visualizations that make sense of the information demonstrate significant potential for revealing patterns of inequality within the United States. The United States has experienced significantly higher rates of fetal, infant, and maternal mortality compared to other high-income countries in recent years. Such an issue places a strain on all people, specifically mothers and children. Fetal, infant, and maternal mortality must be carefully and properly addressed to ensure the safety of all mothers, infants, and unborn children. Through the data wrangling and visualization conducted for the project, we begin to unveil truths behind the numbers and figures of the datasets used for the project. The content and data presented in this project are only the first steps in addressing the importance of maternal, infant, and fetal mortality within the United States."),
+  p("In the “WA State: Infant & Fetal Mortality page,” we analyze fetal and infant mortality data in all 39 Washington state counties. To properly understand the issue of infant and fetal mortality, we began by analyzing the data locally. Trends within the datasets highlight stark differences between county lines. The main difference is the contrasting amount of data readily available from county to county. The scatterplot on this page displays rich data from counties with high incomes but shows little to no data from counties with low incomes. Such difference alludes to potential health inequity within Washington State. More specifically, the differences might infer potential inequities within the data collection process and healthcare systems in Washington state."),
+  p("The second page, “U.S. Infant Mortality,” displays three data visualizations. The first is a map of U.S. states that shows the total number of infant mortalities in each state from the years 2014 to 2020. The map demonstrates stark differences from state to state, allowing us to better understand the geographic distribution of infant mortality throughout the United States.  Some states show much higher rates of infant mortality, including California and Texas. Other states, such as Maine, have much lower rates of infant mortality. Similarly, the line graph shows the distribution of infant mortality by state but through the years provided by the dataset. The majority of states demonstrate constant rates of infant mortality but the states with the highest rates have experienced a decrease in the amount of infant mortality. The bar graph shows a similar trend, except by year and within the U.S. as a whole. Since 2014, annual infant mortality has fallen, and as of 2020, the number stands at a much lower rate. Ultimately, the data shows that infant mortality within the U.S. is falling. This allows us to make the conclusion that the nation is making significant advancements to alleviate the burden of infant mortality on the American people. Although, there is still a lot more work to be done as the rate continues to stand at over 20,000 infant deaths as of 2020."),
+  p("Finally, the last page, “Maternal Mortality,” shows the distribution of maternal mortality ratios on a global scale. The first data visualization is a map displaying the maternal mortality ratio across the globe. The main findings from the data shown by the map indicate that “underdeveloped” countries experience significantly higher ratios of maternal mortality. This is likely due to the lack of services and resources needed to properly address maternal mortality. The second data visualization presented on the page is a line graph displaying the maternal mortality rate of each country from the years 2000 to 2017. The maternal mortality trend differs from country to country but the same trend as above is seen in this graph, showing that “underdeveloped” countries experience higher rates of maternal mortality. The major takeaway from this page is that “underdeveloped” countries experience significantly higher rates of maternal mortality due to societal impacts such as decreased access to healthcare and high poverty rates.")
   #)
 )
+
 
 # Page 6: Report
 report_page <- tabPanel(
@@ -212,6 +200,7 @@ ui <- fluidPage(
     second_page,
     us_states_page, # third page
     maternal_mortality_page, # fourth page
-    report_page # sixth page
+    report_page, # sixth page
+    summary_page
   )
 )
