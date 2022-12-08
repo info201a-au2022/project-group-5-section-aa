@@ -4,10 +4,21 @@
 library(shiny)
 library(tidyverse)
 library(ggplot2)
+library(markdown)
+
+# JP Extra Libraries
+library(dplyr)
+library(plotly)
+library(maps)
+library(datasets)
+library(usdata)
+# Map library 
+library(mapproj)
 
 # Loading data
 wastate_deaths <- read.csv("./wastate_cleaned.csv") # set session to source file location 
-maternalMortalityRatio <- read.csv("../data/maternalMortalityRatio_cleaned.csv")
+maternalMortalityRatio <- read.csv("./maternalmortalityratio_cleaned.csv")
+states_data <- read.csv("./im_state_table.csv")
 
 # Writing server code
 server <- (function(input, output) {
@@ -19,7 +30,7 @@ server <- (function(input, output) {
   })
   
   output$newinfantwidget <- renderUI({
-    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 2.5)
+    numericInput("year", "Choose a year:", value = 2010, min = 1990, max = 2020, step = 5)
   })
   # Plot for Page 2
   output$infantPlot <- renderPlotly({
@@ -111,5 +122,88 @@ server <- (function(input, output) {
   })
   
   #JP's section
+  #Widget creation
+  output$value <- renderPrint({ input$num }) 
   
+  output$states_map <- renderPlot({
+    
+    # Data Wrangling for Map
+    states_data$URL <- NULL #Making URL column null
+    
+    states_data <- states_data %>% 
+      filter(!row_number() %in% c(351:400)) #Remove 2005 data, dataset now 2014 - 2020
+    
+    state_shape <- map_data("state")
+    state_abbrevs <- data.frame(state.abb, state.name)
+    
+    map_data <- left_join(states_data, state_abbrevs, by = c('STATE' = 'state.abb')) %>% 
+      mutate(region = tolower(state.name))
+    
+    map_data <- left_join(state_shape, map_data)
+    
+    map_data <- map_data %>% distinct(long, lat, region, YEAR, STATE, RATE, DEATHS)
+    
+    #Creating Total Infant Mortality Map
+    ggplot(map_data) +
+      geom_polygon(
+        mapping = aes(x = long, y = lat, group = STATE, fill = DEATHS),
+        color = "black", # show state outlines
+        linewidth = 0.1 # thinly stroked
+      ) +
+      coord_map() + # use a map-based coordinate system
+      scale_fill_continuous(low="yellow", high="red") +
+      labs(fill = "Total Infant Deaths",
+           x = "Longitude",
+           y = "Latitude",
+           title = "U.S. Infant Death Rate by State from 2014 - 2020")
+    
+  })
+  
+  output$state_bargraph <- renderPlot({
+    # ALL STATES INFANT DEATH BAR GRAPH
+    
+    states_data <- states_data %>% 
+      filter(!row_number() %in% c(351:400)) #Remove 2005 data, dataset now 2014 - 2020
+    
+    by_year <- states_data %>% #Data Wrangling for bar graph
+      group_by(YEAR) %>% 
+      summarize(state_deaths_total = sum(DEATHS, na.rm = TRUE))
+    
+    ggplot(data = by_year) + 
+      geom_col(mapping = aes(
+        x = YEAR, 
+        y = state_deaths_total
+      ), 
+      fill = "lightblue"
+      ) + 
+      scale_y_continuous(labels = scales:: comma) +
+      labs(
+        x = "Year",
+        y = "Total U.S. States Infant Deaths",
+        title = "Annual Infant Deaths from 2014 to 2020"
+      ) + 
+      geom_smooth(aes(x = YEAR, y = state_deaths_total), se = FALSE)
+    
+  })
+  
+  output$states_linegraph <- renderPlot({
+    
+    line_graph_data <- states_data %>%
+      filter(STATE %in% c("AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                          "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                          "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                          "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                          "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"))
+    
+    
+    line_graph_data %>% 
+      ggplot(aes(x=YEAR, y=DEATHS, group=STATE, color=STATE)) +
+      geom_line() +
+      theme(
+        legend.position = "left",
+        plot.title = element_text(size=14)
+      ) +
+      ggtitle("Infant Mortality by State from 2014 to 2020")
+    
+  })
 })
