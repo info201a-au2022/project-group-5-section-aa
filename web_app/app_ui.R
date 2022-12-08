@@ -69,9 +69,9 @@ second_page <-tabPanel(
                fluidRow(
                  column(12,
                         p("How to use chart: You can add or remove which counties you would like to visualize alongside changing which years you would like to visualize. 
-                          Any changes you make using the widgets will be also be displayed on the fetal tab"),
-                        p("Chart summary: Infant mortality: The CDC defines infant mortality as the death of an infant before his or her first birthday and fetal mortality is the spontaneuous death of a fetus at any time during pregnancy.
-                        The purpose of these two charts is to provide insight into how the rate of infant and fetal deaths differs across county lines. 
+                          Any changes you make using the widgets will be also be displayed on the fetal tab."),
+                        p("Chart summary: The CDC defines infant mortality as the death of an infant before his or her first birthday and fetal mortality as the spontaneuous death of a fetus at any time during pregnancy.
+                        The purpose of these two charts is to provide insight into how the rate of infant and fetal deaths differs across county lines in the state of Washington. 
                         Counties ranked among the lowest per capita personal income have little to no data regarding
                           infant deaths to draw conclusions from. Trends we can see throughout this data is that overall, there is fluctuation in the rate of 
                           infant and fetal deaths across counties. Notably, in recent years, Pierce has seen a decline in both infant and fetal deaths. 
@@ -87,15 +87,42 @@ second_page <-tabPanel(
 
 # Page 3: Interactive Page - Infant Mortality(US)
 us_states_page <- tabPanel(
-  "Infant Deaths",
+  "U.S. Infant Mortality",
   mainPanel(
     h1("Infant Deaths"),
-    p("Infant mortality is the death of an infant before his or her first birthday.
-      The map graph displays the total number of infant mortalities that have occured
-      in each state from 2005 to 2020.")
+    p("The Center for Disease Control Defines Infant Mortality as the death of 
+      an infant before his or her first birthday. Almost 20,000 infants died in 
+      the United States in 2020. Infant Mortality remains significantly high in 
+      the United States. The charts below display total infant deaths by state
+      between the years 2014 to 2020.")
   ),
   mainPanel(
-    plotOutput("states_map")
+    plotOutput("states_map"),
+  ),
+  sidebarPanel(
+    numericInput("YEAR", "Choose a Year:", value = 2020, min = 2014, max = 2020, step = 1)
+  ),
+  mainPanel(
+    p("The map above demonstrates contrasting numbers of total infant deaths from state
+      to state. Some states such as California, Texas, and Florida have a significantly higher
+      number of infant deaths. Other states such as Maine and Wyoming have much lower
+      levels.")
+  ),
+  mainPanel(
+    plotOutput("state_bargraph"),
+    p("Since the year 2014, annual infant deaths have slowly fallen within the
+      United States. Significantly less infant deaths occured in the year 2020
+      compared to the first year of data collection for the graph. Such data
+      demonstrates major improvements within American systems and shows that the
+      country is taking initiatives to alleviate infant mortality.")
+  ),
+  mainPanel(
+    plotOutput("states_linegraph"),
+    p("Similar to the bar graph above, the line graph demonstrates an overall falling
+      infant mortality trend among states. Although some states display a constant trend,
+      the states with the highest rates of infant mortality show a falling trend. Ultimately,
+      the data from individuals states alligns with data above, showing that infant
+      mortality is falling in the U.S.")
   )
 )
 
